@@ -68,79 +68,69 @@ export function mount(root) {
   const state = { ...value, checked: new Set(value.checked) };
   root.classList.add("yuva-basic");
   root.innerHTML = `
-    <div class="page">
-      <header class="masthead">
+    <header class="masthead">
+      <div class="masthead-inner">
         <div class="wordmark">
-          <svg width="31" height="31" viewBox="0 0 32 32" aria-hidden="true">
-            <rect width="32" height="32" rx="8" fill="currentColor"/>
-            <path d="M9 15.5 16 9l7 6.5V23h-5v-5h-4v5H9Z" fill="none" stroke="#fffdf5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M8 15.5 16 8l8 7.5V24H8Z M13 19l2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
           Yuva
         </div>
-        <span class="masthead-label">The move-in checklist</span>
-      </header>
-      <main>
-        <section class="intro" aria-labelledby="basic-title">
-          <div>
-            <p class="eyebrow"><span aria-hidden="true"></span> The essentials</p>
-            <h1 id="basic-title">Make yourself <em>at home.</em></h1>
-            <p class="intro-copy">A room-by-room checklist for settling into your new place.</p>
-          </div>
-          <svg class="key-art" viewBox="0 0 214 126" fill="none" aria-hidden="true">
-            <path d="M169 37c15 8 21 29 9 44-12 16-40 23-63 25-35 3-68-4-79-19-14-19 10-35 30-42 38-15 80-19 103-8Z" fill="#ecebd7"/>
-            <path d="M128 46c1-10 14-21 25-16 7 3 8 10 5 15-3 5-11 7-16 3" stroke="#616745" stroke-width="1.6" stroke-linecap="round"/>
-            <path d="m122 45 37 10 9 14-12 36-36-12 10-27-12-10c-4-4-1-10 4-11Z" fill="#e7c7ae" stroke="#9e684e" stroke-width="1.5" stroke-linejoin="round"/>
-            <circle cx="127" cy="53" r="2.5" stroke="#9e684e" stroke-width="1.4"/>
-            <path d="m147 65 9 3m-12 4 13 4m-10 4 7 2" stroke="#9e684e" stroke-width="1.3" stroke-linecap="round"/>
-            <path d="M119 49a19 19 0 1 1-35 6L53 72l-3 9 8 2 7-4 7 2 4-6 7 1 10-6a19 19 0 0 1 26-21Z" fill="#cbd0a9" stroke="#616745" stroke-width="1.6" stroke-linejoin="round"/>
-            <circle cx="109" cy="57" r="4.5" stroke="#616745" stroke-width="1.5"/>
-            <path d="m60 75 29-16m-9-24v-9m-4 4h8m104 23v-10m-5 5h10M31 63v-6m-3 3h6" stroke="#616745" stroke-width="1.3" stroke-linecap="round"/>
-          </svg>
-        </section>
-        <div class="workspace">
-          <section class="setup" aria-labelledby="basic-setup-title">
-            <h2 id="basic-setup-title">Your setup</h2>
-            <p class="setup-copy">A few details shape your checklist.</p>
-            <div class="setup-fields">
-              <fieldset>
-                <legend>Home size</legend>
-                <div class="choices">${homeSizes.map((label, index) =>
-                  option("bedrooms", index, label, index === state.bedrooms)).join("")}</div>
-              </fieldset>
-              <fieldset>
-                <legend>People at home</legend>
-                <div class="choices">${householdSizes.map((label, index) =>
-                  option("people", index + 1, label, index + 1 === state.people)).join("")}</div>
-              </fieldset>
-              <fieldset>
-                <legend>Kids &amp; pets <span class="optional">Optional</span></legend>
-                <div class="extras">
-                  <label><input type="checkbox" name="kids"${state.kids ? " checked" : ""}> Kids</label>
-                  <label><input type="checkbox" name="pets"${state.pets ? " checked" : ""}> Pets</label>
-                </div>
-              </fieldset>
-            </div>
-            <p class="setup-note">
-              <svg width="17" height="17" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M10 2v4m0 8v4M2 10h4m8 0h4M4.3 4.3l2.8 2.8m5.8 5.8 2.8 2.8m0-11.4-2.8 2.8m-5.8 5.8-2.8 2.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-              </svg>
-              Your list updates as you make choices.
-            </p>
-          </section>
-          <section class="checklist" aria-labelledby="basic-list-title">
-            <div class="list-heading">
-              <div>
-                <h2 id="basic-list-title">Your checklist</h2>
-                <p>Tick off what you already have or pick up.</p>
-              </div>
-              <p class="progress-label" role="status"></p>
-            </div>
-            <div class="room-grid"></div>
-          </section>
+        <span class="masthead-label">Home essentials</span>
+      </div>
+    </header>
+    <main class="page">
+      <section class="intro" aria-labelledby="basic-title">
+        <div>
+          <p class="eyebrow">Move-in checklist</p>
+          <h1 id="basic-title">Make yourself at home.</h1>
+          <p class="intro-copy">A room-by-room checklist for settling into your new place.</p>
         </div>
-        <p class="storage-message" role="status"></p>
-      </main>
-    </div>`;
+        <span class="palette-mark" aria-hidden="true"></span>
+      </section>
+      <div class="workspace">
+        <section class="setup" aria-labelledby="basic-setup-title">
+          <h2 id="basic-setup-title">Your setup</h2>
+          <p class="setup-copy">A few details shape your checklist.</p>
+          <div class="setup-fields">
+            <fieldset>
+              <legend>Home size</legend>
+              <div class="choices">${homeSizes.map((label, index) =>
+                option("bedrooms", index, label, index === state.bedrooms)).join("")}</div>
+            </fieldset>
+            <fieldset>
+              <legend>People at home</legend>
+              <div class="choices">${householdSizes.map((label, index) =>
+                option("people", index + 1, label, index + 1 === state.people)).join("")}</div>
+            </fieldset>
+            <fieldset>
+              <legend>Kids &amp; pets <span class="optional">Optional</span></legend>
+              <div class="extras">
+                <label><input type="checkbox" name="kids"${state.kids ? " checked" : ""}> Kids</label>
+                <label><input type="checkbox" name="pets"${state.pets ? " checked" : ""}> Pets</label>
+              </div>
+            </fieldset>
+          </div>
+          <p class="setup-note">
+            <svg width="17" height="17" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M4 7h12m-3-3 3 3-3 3m3 3H4m3-3-3 3 3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Your list updates as you make choices.
+          </p>
+        </section>
+        <section class="checklist" aria-labelledby="basic-list-title">
+          <div class="list-heading">
+            <div>
+              <h2 id="basic-list-title">Your checklist</h2>
+              <p>Tick off what you already have or pick up.</p>
+            </div>
+            <p class="progress-label" role="status"></p>
+          </div>
+          <div class="room-grid"></div>
+        </section>
+      </div>
+      <p class="storage-message" role="status"></p>
+    </main>`;
 
   const roomGrid = root.querySelector(".room-grid");
   const progress = root.querySelector(".progress-label");
