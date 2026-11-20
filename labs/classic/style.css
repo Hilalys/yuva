@@ -1,0 +1,316 @@
+.yuva-classic {
+  --paper: #fff8e7;
+  --grid: rgba(140, 100, 40, .1);
+  --surface: #fff;
+  --surface-2: #fbf3e2;
+  --ink: #000;
+  --muted: #4e4637;
+  --rule: rgba(0, 0, 0, .16);
+  --shadow: #000;
+  --primary: #ffe14d;
+  --on-accent: #000;
+  --label: #fff;
+  --focus: #1f4bff;
+  --ok: #5fd38d;
+  --have: #9db2ff;
+  --danger: #ff6b6b;
+  --scrim: rgba(6, 14, 38, .55);
+  --room-living: #ffb547;
+  --room-kitchen: #ffe14d;
+  --room-dining: #ff8a8a;
+  --room-bedroom: #b8a1ff;
+  --room-bathroom: #6ed3f5;
+  --room-office: #b6f04a;
+  --room-entry: #f7c59f;
+  --room-laundry: #7eead0;
+  --room-balcony: #6fcf7f;
+  --cat-general: #ff7849;
+  --cat-cleaning: #8ea8ff;
+  --cat-storage: #d9b98a;
+  --cat-hosting: #ff9bd2;
+  --cat-movein: #c9c9d1;
+  --iso-wall: #fff;
+  --iso-wall-side: #e3e9f4;
+  --iso-wood: #e3b27b;
+  --iso-fabric: #5b7cfa;
+  --iso-linen: #f4efe6;
+  --iso-dark: #2c2c38;
+  --iso-metal: #c8cfdb;
+  --iso-plant: #3dbb6e;
+  --iso-pot: #e07a5f;
+  --iso-shade: #ffe9a8;
+  --iso-water: #bfe6ff;
+  --sh-xs: 2px 2px 0 var(--shadow);
+  --sh-sm: 3px 3px 0 var(--shadow);
+  --sh: 4px 4px 0 var(--shadow);
+  --sh-cat: 5px 5px 0 var(--shadow);
+  --sh-lg: 6px 6px 0 var(--shadow);
+  --r-xs: 6px;
+  --r-sm: 8px;
+  --r-md: 10px;
+  --r: 12px;
+  --r-cat: 16px;
+  --r-lg: 18px;
+  --r-pill: 999px;
+  --font-sans: "Archivo", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --spring: cubic-bezier(.3, 1.45, .55, 1);
+  min-height: 100dvh;
+  background-color: var(--paper);
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: var(--ink);
+  font: 400 16px/1.45 var(--font-sans);
+}
+.yuva-classic[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #0c1c44;
+  --grid: rgba(150, 185, 255, .1);
+  --surface: #132a60;
+  --surface-2: #19346f;
+  --ink: #eef3ff;
+  --muted: #bacaec;
+  --rule: rgba(238, 243, 255, .2);
+  --shadow: #020a24;
+  --focus: #ffe14d;
+  --scrim: rgba(0, 4, 18, .7);
+}
+body:has(> .yuva-classic) { margin: 0; }
+.yuva-classic *, .yuva-classic *::before, .yuva-classic *::after { box-sizing: border-box; }
+.yuva-classic :is(h1, h2, h3, p) { margin: 0; }
+.yuva-classic :is(button,input,select) { font: inherit; color: inherit; }
+.yuva-classic :is(button,select) { cursor: pointer; }
+.yuva-classic :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.yuva-classic .icon { width: 19px; height: 19px; flex: none; vertical-align: middle; }
+.yuva-classic .sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.yuva-classic .masthead { background: var(--surface); border-bottom: 2px solid var(--ink); }
+.yuva-classic .mast-inner, .yuva-classic .sheet { width: min(100% - 64px, 1440px); margin: auto; }
+.yuva-classic .mast-inner { min-height: 64px; display: flex; align-items: center; gap: 16px; }
+.yuva-classic .brand { display: flex; align-items: center; gap: 9px; font-size: 27px; font-weight: 900; letter-spacing: -.05em; }
+.yuva-classic .mast-caption { border-left: 1px solid var(--rule); padding-left: 16px; color: var(--muted); font-size: 13px; font-weight: 650; }
+.yuva-classic .top-actions { margin-inline-start: auto; display: flex; gap: 12px; }
+.yuva-classic .button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  min-height: 38px;
+  padding: 0 13px;
+  border: 2px solid var(--ink);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  box-shadow: var(--sh-sm);
+  font-size: 14px;
+  font-weight: 750;
+  white-space: nowrap;
+  transition: transform .12s, box-shadow .12s;
+}
+.yuva-classic .button:active { transform: translate(3px, 3px); box-shadow: none; }
+.yuva-classic .primary { color: var(--on-accent); background: var(--primary); }
+.yuva-classic .theme { width: 39px; padding: 0; }
+.yuva-classic .sheet { padding: 19px 0 76px; }
+.yuva-classic .intro { display: grid; grid-template-columns: 1fr minmax(390px, .82fr); align-items: center; gap: 28px; margin-bottom: 18px; }
+.yuva-classic .intro-copy { padding: 4px 0; }
+.yuva-classic .eyebrow {
+  color: var(--muted);
+  font: 750 11px/1.2 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: .11em;
+}
+.yuva-classic .intro-copy .eyebrow { display: flex; align-items: center; gap: 9px; }
+.yuva-classic .eyebrow-line { display: inline-block; width: 25px; height: 6px; background: var(--primary); border: 1px solid var(--ink); }
+.yuva-classic h1 { margin: 4px 0 3px; font-size: clamp(42px, 5vw, 72px); font-weight: 900; line-height: 1.03; letter-spacing: -.067em; }
+.yuva-classic .lede { color: var(--muted); font-size: 16px; }
+.yuva-classic .price-note { color: var(--muted); font-size: 12px; margin-top: 3px; }
+.yuva-classic .paper-card { border: 2px solid var(--ink); border-radius: var(--r-lg); background: var(--surface); box-shadow: var(--sh-cat); }
+.yuva-classic .budget { padding: 11px 15px 10px; box-shadow: var(--sh); }
+.yuva-classic .budget-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.yuva-classic .budget-planned { min-width: 0; }
+.yuva-classic .budget-planned strong { display: block; font-size: clamp(23px, 2.4vw, 32px); line-height: 1.12; font-weight: 900; overflow-wrap: anywhere; }
+.yuva-classic .budget-label { display: grid; gap: 2px; font-size: 11px; font-weight: 750; color: var(--muted); width: min(36%, 130px); }
+.yuva-classic .money-field { display: flex; align-items: center; gap: 4px; min-width: 0; border: 1.5px solid var(--ink); background: var(--surface); border-radius: var(--r-sm); padding: 0 7px; color: var(--ink); }
+.yuva-classic .money-field input { width: 100%; min-width: 0; border: 0; background: transparent; padding: 4px 0; font-size: 16px; appearance: textfield; }
+.yuva-classic .money-field input::-webkit-inner-spin-button,
+.yuva-classic .money-field input::-webkit-outer-spin-button { appearance: none; }
+.yuva-classic .money-field:focus-within { outline: 3px solid var(--focus); outline-offset: 2px; }
+.yuva-classic .money-field input:focus { outline: none; }
+.yuva-classic .budget-meter { display: flex; height: 12px; margin: 7px 0 5px; border: 1.5px solid var(--ink); border-radius: var(--r-pill); background: var(--surface-2); overflow: hidden; }
+.yuva-classic .budget-meter > span { flex: 0 0 auto; border-right: 1px solid var(--on-accent); }
+.yuva-classic .bought { background: var(--ok); }
+.yuva-classic .planned { background: var(--primary); }
+.yuva-classic .overage { background: repeating-linear-gradient(45deg, #0003 0 3px, transparent 3px 7px), var(--danger); }
+.yuva-classic .budget-figures { display: flex; align-items: baseline; flex-wrap: wrap; gap: 2px 13px; font-size: 12px; color: var(--muted); }
+.yuva-classic .budget-figures strong { margin-inline-start: auto; color: var(--ink); }
+.yuva-classic .budget-figures .over { color: var(--on-accent); background: var(--danger); padding: 0 5px; border-radius: 3px; }
+.yuva-classic .key { display: inline-block; width: 11px; height: 11px; border: 1px solid var(--ink); border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
+.yuva-classic .workspace { display: grid; grid-template-columns: minmax(0, 1.13fr) minmax(0, 1fr); align-items: start; gap: 28px; }
+.yuva-classic .panel-heading { display: flex; gap: 10px; align-items: end; justify-content: space-between; padding: 13px 15px 11px; }
+.yuva-classic .panel-heading h2 { font-size: 25px; line-height: 1.06; font-weight: 900; letter-spacing: -.035em; margin-top: 3px; }
+.yuva-classic .panel-hint { color: var(--muted); font-size: 12px; font-weight: 650; text-align: end; }
+.yuva-classic .drawing {
+  display: grid;
+  place-items: center;
+  position: relative;
+  background-color: var(--paper);
+  background-image: radial-gradient(var(--grid) 1.2px, transparent 1.2px);
+  background-size: 13px 13px;
+  border-block: 2px solid var(--ink);
+  padding: 0 12px;
+}
+.yuva-classic .drawing-note { position: absolute; top: 10px; left: 12px; font: 650 9px/1.35 ui-monospace, monospace; letter-spacing: .07em; color: var(--muted); }
+.yuva-classic .model { width: min(100%, 500px); position: relative; container-type: inline-size; }
+.yuva-classic .house-svg { display: block; width: 100%; }
+.yuva-classic .iso-room { cursor: pointer; transition: transform .32s var(--spring), opacity .2s ease; animation: classic-assembly .6s var(--spring) backwards; animation-delay: calc(var(--i) * 55ms); }
+.yuva-classic .iso-room polygon { stroke: var(--on-accent); stroke-width: 1.2; stroke-linejoin: round; }
+.yuva-classic .iso-room .top { fill: var(--top); }
+.yuva-classic .iso-room .front { fill: color-mix(in srgb, var(--side) 79%, black); }
+.yuva-classic .iso-room .right { fill: color-mix(in srgb, var(--side) 62%, black); }
+.yuva-classic .iso-room .iso-shadow { fill: var(--shadow); stroke: none; pointer-events: none; }
+.yuva-classic .ghost polygon { fill: #ffffff47 !important; stroke: #40382f !important; stroke-dasharray: 2.8 2.4; stroke-width: .95; }
+.yuva-classic .drop-in { animation: classic-drop .55s var(--spring); }
+@keyframes classic-assembly { from { transform: translateY(24px); opacity: 0; } }
+@keyframes classic-drop { from { transform: translateY(-22px); opacity: 0; } }
+@media (hover: hover) {
+  .yuva-classic .iso-room:hover { transform: translateY(-4px); }
+  .yuva-classic .button:hover { transform: translate(-1px, -1px); }
+  .yuva-classic .button:active { transform: translate(3px, 3px); }
+}
+.yuva-classic .iso-room.is-selected { transform: translateY(-12px); }
+.yuva-classic .has-selection .iso-room:not(.is-selected) { opacity: .46; }
+.yuva-classic .map-label {
+  position: absolute;
+  z-index: 1;
+  left: var(--x);
+  top: var(--y);
+  transform: translate(-50%, -50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 24px;
+  padding: 1px 5px;
+  background: var(--label);
+  color: var(--on-accent);
+  border: 1.5px solid var(--on-accent);
+  border-radius: var(--r-pill);
+  white-space: nowrap;
+  box-shadow: var(--sh-xs);
+  font-size: clamp(9px, 2.25cqw, 12px);
+  font-weight: 750;
+  transition: transform .32s var(--spring);
+}
+.yuva-classic .map-label i, .yuva-classic .chip i { width: 8px; height: 8px; flex: none; border: 1px solid var(--on-accent); border-radius: 50%; background: var(--c); }
+.yuva-classic .map-label span { border-inline-start: 1px solid currentColor; padding-inline-start: 4px; font-size: .9em; }
+.yuva-classic .map-label[aria-pressed="true"] { z-index: 2; background: var(--on-accent); color: var(--label); transform: translate(-50%, calc(-50% - 2.5cqw)); }
+.yuva-classic .legend { display: flex; flex-wrap: wrap; gap: 3px 17px; padding: 8px 15px; color: var(--muted); font-size: 12px; font-weight: 650; }
+.yuva-classic .legend .solid { background: var(--room-living); }
+.yuva-classic .legend .dashed { border-style: dashed; background: var(--surface-2); }
+.yuva-classic .plan-summary { border-top: 1px solid var(--rule); padding: 8px 15px 12px; }
+.yuva-classic .summary-label { display: flex; justify-content: space-between; gap: 6px; align-items: baseline; }
+.yuva-classic .summary-label strong { font-size: 15px; }
+.yuva-classic .summary-label span { color: var(--muted); font-size: 12px; }
+.yuva-classic .jump-to-list { display: none; }
+.yuva-classic progress { appearance: none; display: block; width: 100%; height: 9px; margin-top: 5px; border: 1px solid var(--ink); border-radius: var(--r-pill); background: var(--surface-2); overflow: hidden; }
+.yuva-classic progress::-webkit-progress-bar { background: var(--surface-2); }
+.yuva-classic progress::-webkit-progress-value { background: var(--ok); border-right: 1px solid #000; }
+.yuva-classic progress::-moz-progress-bar { background: var(--ok); }
+.yuva-classic .list { min-width: 0; }
+.yuva-classic .list .panel-heading { padding-inline: 1px; padding-top: 2px; }
+.yuva-classic .search { display: flex; align-items: center; gap: 7px; min-height: 43px; padding: 0 10px; background: var(--surface); border: 2px solid var(--ink); border-radius: var(--r); box-shadow: var(--sh-sm); }
+.yuva-classic .search input { width: 100%; min-width: 0; padding: 6px 0; border: 0; background: transparent; }
+.yuva-classic .search:focus-within { outline: 3px solid var(--focus); outline-offset: 2px; }
+.yuva-classic .search input:focus { outline: none; }
+.yuva-classic input::placeholder { opacity: 1; color: var(--muted); }
+.yuva-classic .list-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; margin: 9px 0 10px; }
+.yuva-classic .segments { display: inline-flex; background: var(--surface); border: 2px solid var(--ink); border-radius: var(--r-md); }
+.yuva-classic .segments button { min-height: 30px; border: 0; border-radius: 0; padding: 0 10px; background: transparent; font-size: 12px; font-weight: 750; white-space: nowrap; }
+.yuva-classic .segments button:focus-visible { z-index: 1; }
+.yuva-classic .segments button:first-child { border-radius: 7px 0 0 7px; }
+.yuva-classic .segments button:last-child { border-radius: 0 7px 7px 0; }
+.yuva-classic .segments button + button { border-left: 1px solid var(--ink); }
+.yuva-classic .segments button[aria-pressed="true"] { color: var(--surface); background: var(--ink); }
+.yuva-classic .missing { min-height: 34px; padding: 0 9px; box-shadow: none; font-size: 12px; }
+.yuva-classic .missing[aria-pressed="true"] { background: var(--primary); color: var(--on-accent); }
+.yuva-classic .filter-label { display: flex; justify-content: space-between; align-items: baseline; gap: 5px; }
+.yuva-classic .filter-label > span:last-child { color: var(--muted); font-size: 11px; }
+.yuva-classic .chips { display: flex; gap: 6px; padding: 5px 3px 6px; margin: 0 -3px 5px; overflow-x: auto; scrollbar-width: thin; }
+.yuva-classic .chip { display: inline-flex; gap: 5px; align-items: center; min-height: 28px; padding-inline: 9px; border: 1.5px solid var(--ink); border-radius: var(--r-pill); background: var(--surface); font-size: 12px; font-weight: 750; white-space: nowrap; }
+.yuva-classic .chip[aria-pressed="true"] { background: var(--c); color: var(--on-accent); box-shadow: var(--sh-xs); }
+.yuva-classic .chip[data-cat="all"][aria-pressed="true"] { background: var(--ink); color: var(--surface); }
+.yuva-classic .results { max-height: max(256px, calc(100dvh - 478px)); overflow: auto; scrollbar-width: thin; padding: 4px 8px 8px 3px; margin: -4px -8px -8px -3px; scrollbar-gutter: stable; }
+.yuva-classic .results:focus-visible { outline-offset: -2px; }
+.yuva-classic .category { border: 2px solid var(--ink); border-radius: var(--r-cat); background: var(--surface); box-shadow: var(--sh-cat); margin: 0 0 14px; }
+.yuva-classic .category:last-child { margin-bottom: 0; }
+.yuva-classic .category-heading { background: var(--c); color: var(--on-accent); border-radius: 13px 13px 0 0; overflow: clip; }
+.yuva-classic .category-heading:has([aria-expanded="false"]) { border-radius: 13px; }
+.yuva-classic .category-heading button { width: 100%; display: flex; align-items: center; text-align: left; gap: 9px; padding: 7px 10px; border: 0; background: transparent; }
+.yuva-classic .category-heading button:focus-visible { outline-offset: -4px; outline-color: #1f41e0; }
+.yuva-classic .twisty { width: 23px; height: 23px; flex: none; display: grid; place-items: center; border: 1px solid #000; border-radius: var(--r-xs); background: #fff9; line-height: 1; }
+.yuva-classic .category-name { font-size: 18px; font-weight: 850; line-height: 1.15; }
+.yuva-classic .category-heading small { display: block; font-size: 11px; font-weight: 650; margin-top: 2px; }
+.yuva-classic .category-cost { margin-inline-start: auto; text-align: right; line-height: 1.15; overflow-wrap: anywhere; }
+.yuva-classic .category-progress { height: 5px; border-top: 1px solid var(--on-accent); background: #fff6; }
+.yuva-classic .category-progress i { height: 100%; display: block; background: var(--on-accent); }
+.yuva-classic .subcategory { background: var(--surface-2); color: var(--muted); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .07em; padding: 3px 12px; }
+.yuva-classic .item-row { display: grid; grid-template-columns: minmax(0, 1fr) 83px 94px; align-items: center; gap: 7px; padding: 7px 10px 7px 12px; border-top: 1px solid var(--rule); }
+.yuva-classic .item-name { font-size: 15px; font-weight: 750; line-height: 1.25; overflow-wrap: anywhere; }
+.yuva-classic .quantity, .yuva-classic .item-note { color: var(--muted); font-size: 12px; overflow-wrap: anywhere; }
+.yuva-classic .row-marker:empty { display: none; }
+.yuva-classic .done-icon { display: inline-flex; color: var(--on-accent); border-radius: 50%; vertical-align: -2px; }
+.yuva-classic .done-icon.have { background: var(--have); }
+.yuva-classic .done-icon .icon { width: 15px; height: 15px; padding: 1px; }
+.yuva-classic .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+.yuva-classic .tag { border: 1px solid var(--ink); border-radius: 4px; padding: 2px 4px; font-size: 10px; font-weight: 700; line-height: 1; }
+.yuva-classic .priority-1 { background: var(--ink); color: var(--surface); }
+.yuva-classic .priority-3 { border-style: dashed; color: var(--muted); }
+.yuva-classic .estimate-tag { background: var(--primary); border-color: var(--on-accent); color: var(--on-accent); }
+.yuva-classic .row-status { min-width: 0; min-height: 34px; padding: 0 4px; border: 1.5px solid var(--ink); border-radius: var(--r-sm); background: var(--surface); font-size: 13px; font-weight: 700; }
+.yuva-classic .row-status.bought { background: var(--ok); color: var(--on-accent); color-scheme: light; }
+.yuva-classic .row-status.have { background: var(--have); color: var(--on-accent); color-scheme: light; }
+.yuva-classic .row-price { min-height: 34px; }
+.yuva-classic .empty { border: 2px dashed var(--ink); border-radius: var(--r-cat); background: var(--surface); padding: 20px; }
+.yuva-classic .empty p { margin: 4px 0 10px; }
+.yuva-classic .storage-warning { margin: 0 0 14px; background: var(--danger); color: var(--on-accent); border: 2px solid var(--on-accent); border-radius: var(--r); padding: 8px 12px; }
+.yuva-classic .add-dialog { width: min(480px, calc(100% - 28px)); max-height: calc(100dvh - 30px); padding: 0; background: var(--surface); color: var(--ink); border: 2px solid var(--ink); border-radius: var(--r-lg); box-shadow: var(--sh-lg); }
+.yuva-classic .add-dialog::backdrop { background: var(--scrim); }
+.yuva-classic .add-form header { padding: 15px 18px; border-bottom: 2px solid var(--on-accent); background: var(--primary); color: var(--on-accent); }
+.yuva-classic .add-form header .eyebrow { color: var(--on-accent); }
+.yuva-classic .add-form h2 { font-size: 24px; }
+.yuva-classic .form-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding: 15px 18px; }
+.yuva-classic .form-fields label { display: grid; gap: 4px; font-size: 13px; font-weight: 750; }
+.yuva-classic .form-fields label > span { display: inline; }
+.yuva-classic .form-fields :is(.wide, .estimate) { grid-column: 1 / -1; }
+.yuva-classic .form-fields :is(input:not([type="checkbox"]), select) { width: 100%; min-width: 0; min-height: 40px; padding: 4px 8px; border: 2px solid var(--ink); border-radius: var(--r-sm); background: var(--surface); font-size: 16px; font-weight: 400; }
+.yuva-classic .form-fields .estimate { display: flex; align-items: center; min-height: 26px; }
+.yuva-classic .add-form footer { display: flex; justify-content: flex-end; gap: 10px; border-top: 1px solid var(--rule); background: var(--surface-2); padding: 11px 18px 14px; }
+
+@media (max-width: 960px) {
+  .yuva-classic .workspace { grid-template-columns: 1fr; gap: 26px; }
+  .yuva-classic .sheet { max-width: 740px; }
+  .yuva-classic .results { max-height: none; overflow: visible; scrollbar-gutter: auto; }
+  .yuva-classic .jump-to-list { display: inline-flex; align-items: center; min-height: 44px; margin-top: 5px; font-size: 14px; font-weight: 750; color: var(--ink); text-underline-offset: 3px; }
+}
+@media (max-width: 660px) {
+  .yuva-classic .sheet, .yuva-classic .mast-inner { width: calc(100% - 28px); }
+  .yuva-classic .sheet { padding-top: 17px; }
+  .yuva-classic .mast-inner { min-height: 58px; }
+  .yuva-classic .intro { grid-template-columns: 1fr; gap: 14px; }
+  .yuva-classic .mast-caption { display: none; }
+  .yuva-classic .plan .panel-heading { padding-inline: 10px; }
+  .yuva-classic .drawing { padding-inline: 0; }
+  .yuva-classic .drawing-note { font-size: 7px; }
+  .yuva-classic .map-label { min-height: 21px; padding-inline: 4px; gap: 2px; }
+  .yuva-classic .map-label i { width: 6px; height: 6px; }
+  .yuva-classic .map-label span { display: none; }
+  .yuva-classic .button, .yuva-classic .chip, .yuva-classic .segments button { min-height: 44px; }
+  .yuva-classic .row-status, .yuva-classic .row-price { min-height: 44px; font-size: 16px; }
+  .yuva-classic .item-row { grid-template-columns: minmax(0, 1fr) 71px 91px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .yuva-classic *, .yuva-classic *::before, .yuva-classic *::after { animation: none !important; transition: none !important; }
+}

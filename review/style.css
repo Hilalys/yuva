@@ -1,0 +1,78 @@
+:root {
+  color-scheme: light;
+  font: 100%/1.5 system-ui, sans-serif;
+  color: #242820;
+  background: #f7f6f0;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  max-width: 90rem;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 4rem) 4rem;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 4.5rem;
+  border-bottom: 1px solid #dcded4;
+  color: #51604b;
+}
+
+.brand {
+  color: #293f23;
+  font-size: 1.5rem;
+  font-weight: 850;
+  letter-spacing: -.05em;
+  text-decoration: none;
+}
+
+.intro { margin-block: clamp(2.5rem, 7vw, 6rem) 2.5rem; }
+
+h1 {
+  margin: 0 0 .75rem;
+  font: 500 clamp(2.5rem, 6vw, 5rem)/1 Georgia, serif;
+  letter-spacing: -.055em;
+}
+
+.intro p { max-width: 42rem; margin: 0; color: #454c42; }
+
+.versions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+  gap: 1.25rem;
+}
+
+.versions article { display: flex; }
+
+.versions a {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid #cdd1c5;
+  border-radius: 1rem;
+  background: #fff;
+  color: inherit;
+  text-decoration: none;
+}
+
+.versions a:hover { border-color: #51604b; }
+.versions a:hover .action { text-decoration: underline; }
+a:focus-visible { outline: 3px solid #254d92; outline-offset: 3px; }
+
+.versions img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #cdd1c5;
+  background: #edede5;
+}
+
+.caption { display: flex; flex-direction: column; padding: 1.25rem; }
+.caption h2 { margin: 0; font-size: 1.25rem; }
+.caption p { margin: .4rem 0 1.25rem; color: #454c42; }
+.action { margin-top: auto; font-weight: 700; color: #293f23; }
