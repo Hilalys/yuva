@@ -76,3 +76,23 @@ a:focus-visible { outline: 3px solid #254d92; outline-offset: 3px; }
 .caption h2 { margin: 0; font-size: 1.25rem; }
 .caption p { margin: .4rem 0 1.25rem; color: #454c42; }
 .action { margin-top: auto; font-weight: 700; color: #293f23; }
+
+.demos { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #dcded4; }
+.demos h2 { margin: 0; font-size: 1.5rem; }
+.demos > p { margin: .4rem 0 1.25rem; color: #454c42; }
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+  gap: 1.25rem;
+}
+.demo-grid figure { margin: 0; }
+.demo-grid video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border-radius: .75rem;
+  background: #e8e9e1;
+}
+.demo-grid video:focus-visible { outline: 3px solid #254d92; outline-offset: 3px; }
+.demo-grid figcaption { margin-top: .6rem; color: #454c42; }

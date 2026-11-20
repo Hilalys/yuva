@@ -48,7 +48,7 @@
 	toggle.title = 'Variations: press [ and ] to step through';
 	toggle.setAttribute('aria-controls', 'lab-choices');
 	toggle.setAttribute('aria-expanded', 'false');
-	toggle.append(el('b', ids[at]), el('span', list[at].name || ''), el('span', `${at + 1}/${list.length}`, 'color: #59636e'));
+	toggle.append(el('b', list[at].name || ids[at]), el('span', `${at + 1}/${list.length}`, 'color: #59636e'));
 
 	const menu = el('ul');
 	menu.id = 'lab-choices';
@@ -57,7 +57,7 @@
 		const item = el('button');
 		item.type = 'button';
 		if (i === at) { item.setAttribute('aria-current', 'true'); }
-		item.append(el('span', `${v.id}  ${v.name || ''}`));
+		item.append(el('span', v.name || v.id));
 		if (v.idea) { item.append(el('small', v.idea)); }
 		item.addEventListener('click', () => go(i));
 		const row = el('li');

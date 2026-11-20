@@ -52,12 +52,13 @@ export function mount(root) {
     </header>
     <main class="frame workspace">
       <section class="intro" aria-labelledby="ym-title">
-        <div><p class="eyebrow intro-index"><span></span> The move-in workspace</p>
-        <h1 id="ym-title">Your move-in plan<span>.</span></h1>
-        <p>See what’s in place and what you still need, room by room.</p></div>
+        <div><h1 id="ym-title">Your move-in plan</h1>
+        <p>See what you have and what you still need, room by room.</p></div>
         <div class="overall">
-          <div class="eyebrow">Move-in progress</div>
-          <div class="overall-value"><strong data-text="done"></strong> <span data-text="of"></span></div>
+          <div class="overall-heading">
+            <div class="eyebrow">Move-in progress</div>
+            <div class="overall-value"><strong data-text="done"></strong> <span data-text="of"></span></div>
+          </div>
           <progress aria-label="Move-in progress"></progress>
         </div>
       </section>
@@ -65,15 +66,11 @@ export function mount(root) {
       <div class="desk">
         <section class="plan" aria-labelledby="ym-plan">
           <div class="plan-head">
-            <div><p class="eyebrow">01 / The floor plan</p><h2 id="ym-plan">The whole home</h2></div>
-            <span class="plan-count">09 ROOMS</span>
+            <div><h2 id="ym-plan">Floor plan</h2><p class="plan-hint">Select a room to filter the checklist.</p></div>
+            <span class="plan-count">9 rooms</span>
           </div>
           <figure class="plan-figure">
-            <div class="plot">
-              <span class="plot-index" aria-hidden="true">FIG. A</span>
-              ${houseMarkup()}
-              <span class="plot-caption" aria-hidden="true">ISOMETRIC VIEW</span>
-            </div>
+            <div class="plot">${houseMarkup()}</div>
             <figcaption class="plan-key">
               <span><i class="solid"></i> Bought or already ours</span><span><i class="outline"></i> Still to get</span>
               <a class="jump-list" href="#ym-checklist">Go to checklist ${arrow}</a>
@@ -81,7 +78,7 @@ export function mount(root) {
           </figure>
           <section class="budget" id="ym-budget" aria-labelledby="ym-budget-title">
             <div class="budget-head">
-              <div><h3 id="ym-budget-title" class="eyebrow">03 / Move-in budget</h3>
+              <div><h3 id="ym-budget-title" class="eyebrow">Move-in budget</h3>
                 <p><strong data-text="planned"></strong> <span>planned</span></p></div>
               <label class="budget-label"><span id="ym-limit-label">Budget limit</span>
                 <span class="price"><span aria-hidden="true">$</span><input id="ym-limit" aria-labelledby="ym-limit-label" type="number" inputmode="decimal" min="0" max="${maxMoney}" step="0.01" placeholder="Set amount" value="${state.budget ?? ""}"></span>
@@ -93,7 +90,7 @@ export function mount(root) {
         </section>
         <section class="checklist" id="ym-checklist" aria-labelledby="ym-list-title">
           <div class="list-head">
-            <div><p class="eyebrow">02 / Room by room</p><h2 id="ym-list-title">The checklist</h2></div>
+            <h2 id="ym-list-title">Checklist</h2>
             <button type="button" class="primary add-item">${plus} Add item</button>
           </div>
           <div class="filters">
@@ -107,13 +104,12 @@ export function mount(root) {
           <div class="rows" id="ym-rows" tabindex="0" role="region" aria-label="Room checklist">
             <div class="empty" hidden><h3>No matching items</h3><p>Try another search or clear the filters.</p><button type="button" class="clear-filters">Clear filters</button></div>
           </div>
-          <footer class="list-note"><span class="note-cross" aria-hidden="true">⌖</span> Tap a room on the plan to narrow the list.</footer>
         </section>
       </div>
     </main>
     <dialog aria-labelledby="ym-add-title">
       <form class="add-form">
-        <div class="dialog-head"><div><p class="eyebrow">The checklist</p><h2 id="ym-add-title">Add an item</h2></div>
+        <div class="dialog-head"><h2 id="ym-add-title">Add an item</h2>
           <button type="button" class="close-dialog" aria-label="Close">${icon('<path d="m6 6 12 12M18 6 6 18"/>')}</button></div>
         <label>Item name<input name="name" required maxlength="120" autofocus placeholder="e.g. Reading lamp"></label>
         <label><span id="ym-new-cat-label">Room or category</span><select name="cat" aria-labelledby="ym-new-cat-label">${options(catOptions)}</select></label>
@@ -243,7 +239,7 @@ export function mount(root) {
     $(".item-count").textContent = `Showing ${visible} of ${state.items.length} items`;
     $(".empty").hidden = visible !== 0;
     const category = categories.find(cat => cat.id === roomFilter.value);
-    $("#ym-plan").textContent = category?.isRoom ? category.name : "The whole home";
+    $("#ym-plan").textContent = category?.isRoom ? category.name : "Floor plan";
     updateHouse(roomFilter.value, state.items);
   }
 

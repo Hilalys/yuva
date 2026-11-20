@@ -98,10 +98,12 @@ export function mount(root) {
             </div>
             <button type="button" class="button missing" data-missing aria-pressed="false">No price yet</button>
           </div>
-          <div class="filter-label"><span class="eyebrow" id="classic-category-label">ROOMS &amp; CATEGORIES</span><span>Scroll for more <span aria-hidden="true">→</span></span></div>
-          <div class="chips" role="group" aria-labelledby="classic-category-label">
-            <button type="button" class="chip" data-cat="all">All</button>
-            ${categories.map(cat => `<button type="button" class="chip" data-cat="${cat.id}" style="--c:${cat.color}"><i></i>${cat.name}</button>`).join("")}
+          <div class="category-filters">
+            <div class="filter-label"><span class="eyebrow" id="classic-category-label">ROOMS &amp; CATEGORIES</span><span>Scroll for more <span aria-hidden="true">→</span></span></div>
+            <div class="chips" role="group" aria-labelledby="classic-category-label">
+              <button type="button" class="chip" data-cat="all">All</button>
+              ${categories.map(cat => `<button type="button" class="chip" data-cat="${cat.id}" style="--c:${cat.color}"><i></i>${cat.name}</button>`).join("")}
+            </div>
           </div>
           <div class="results" role="region" aria-label="Checklist items" tabindex="0"></div>
         </section>

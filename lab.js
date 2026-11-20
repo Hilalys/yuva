@@ -1,17 +1,23 @@
 const variations = [
-  { id: "classic", name: "Design system", idea: "Cut paper, bold room colors, and a house that fills as you go." },
+  { id: "primary", folder: "classic", name: "Primary", idea: "Cut paper, bold room colors, and a house that fills as you go." },
   { id: "modern", name: "Modern", idea: "An architectural workspace with the same room list, budget, and progress." },
   { id: "basic", name: "Basic", idea: "A few household choices build a room-by-room checklist." },
 ];
 
 const root = document.querySelector("#yuva");
-const params = new URLSearchParams(location.search);
+const url = new URL(location.href);
+const params = url.searchParams;
+if (params.get("v") === "classic") {
+  params.set("v", "primary");
+  history.replaceState(history.state, "", url);
+}
 const variant = variations.find(({ id }) => id === params.get("v")) ?? variations[0];
+const folder = variant.folder ?? variant.id;
 document.title = `Yuva · ${variant.name}`;
 
 const style = document.createElement("link");
 style.rel = "stylesheet";
-style.href = `./labs/${variant.id}/style.css`;
+style.href = `./labs/${folder}/style.css`;
 
 try {
   const ready = new Promise((resolve, reject) => {
@@ -19,7 +25,7 @@ try {
     style.addEventListener("error", () => reject(new Error("Variation stylesheet couldn't load")), { once: true });
     document.head.append(style);
   });
-  const [{ mount }] = await Promise.all([import(`./labs/${variant.id}/index.js`), ready]);
+  const [{ mount }] = await Promise.all([import(`./labs/${folder}/index.js`), ready]);
   root.replaceChildren();
   mount(root);
 } catch (error) {
