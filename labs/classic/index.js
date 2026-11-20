@@ -105,7 +105,7 @@ export function mount(root) {
               ${categories.map(cat => `<button type="button" class="chip" data-cat="${cat.id}" style="--c:${cat.color}"><i></i>${cat.name}</button>`).join("")}
             </div>
           </div>
-          <div class="results" role="region" aria-label="Checklist items" tabindex="0"></div>
+          <div class="results" role="region" aria-label="Checklist items" tabindex="-1"></div>
         </section>
       </div>
     </main>
@@ -132,6 +132,7 @@ export function mount(root) {
   const search = get("[data-search]");
   const budgetInput = get("[data-budget]");
   const results = get(".results");
+  const listTitle = get("#classic-list-title");
   const dialog = get(".add-dialog");
   const form = get(".add-form");
   const warning = get(".storage-warning");
@@ -165,7 +166,11 @@ export function mount(root) {
     }
     renderFilters();
   }
-  const updateHouse = mountHouse(get(".model"), toggle);
+  const updateHouse = mountHouse(get(".model"), id => {
+    const listIsAbove = listTitle.getBoundingClientRect().top < 0;
+    toggle(id);
+    if (listIsAbove) listTitle.scrollIntoView({ block: "start" });
+  });
 
   function renderBudget() {
     const { planned, spent, toBuy } = totals(items);
@@ -188,7 +193,7 @@ export function mount(root) {
     meter.setAttribute("aria-label", `${money(spent)} bought, ${money(toBuy)} to buy. ${balance.textContent}.`);
   }
 
-  function renderList(resetScroll = false) {
+  function renderList() {
     const query = search.value.trim().toLocaleLowerCase();
     const visible = items.filter(item =>
       (!selected.size || selected.has(item.cat)) &&
@@ -199,7 +204,6 @@ export function mount(root) {
     text("[data-count]", `${visible.length} of ${items.length} items`);
     const active = doc.activeElement;
     const retain = results.contains(active) && active.dataset.act ? active.dataset : null;
-    const scrollPosition = results.scrollTop;
     results.innerHTML = categories.map(cat => {
       const current = visible.filter(item => item.cat === cat.id);
       if (!current.length) return "";
@@ -222,7 +226,6 @@ export function mount(root) {
           ${current.filter(item => item.sub === sub).map(row).join("")}`).join("") : ""}</div></article>`;
     }).join("") || `<div class="empty"><h3>No matching items</h3><p>Try a different search or clear the filters.</p>
       <button type="button" class="button" data-act="clear">Clear filters</button></div>`;
-    results.scrollTop = resetScroll ? 0 : scrollPosition;
     if (retain) {
       const next = [...results.querySelectorAll("[data-act]")].find(node => node.dataset.act === retain.act && node.dataset.id === retain.id);
       (next ?? results).focus({ preventScroll: true });
@@ -258,10 +261,10 @@ export function mount(root) {
     }
     for (const button of root.querySelectorAll("[data-status-filter]")) button.setAttribute("aria-pressed", button.dataset.statusFilter === status);
     get("[data-missing]").setAttribute("aria-pressed", missingOnly);
-    render(true);
+    render();
   }
 
-  function render(resetScroll = false, patchRow) {
+  function render(patchRow) {
     updateHouse(selected, items);
     const subset = selected.size ? items.filter(item => selected.has(item.cat)) : items;
     const { done } = totals(subset);
@@ -272,12 +275,12 @@ export function mount(root) {
     progress.value = done;
     renderBudget();
     if (patchRow) patchRow();
-    else renderList(resetScroll);
+    else renderList();
   }
 
   search.addEventListener("input", () => {
     collapsed.clear();
-    renderList(true);
+    renderList();
   });
   budgetInput.addEventListener("change", () => {
     if (!budgetInput.reportValidity()) return;
@@ -339,7 +342,7 @@ export function mount(root) {
     }
 
     // Keep the native controls mounted while the edited price commits on blur.
-    render(false, () => {
+    render(() => {
       const rowNode = target.closest(".item-row");
       rowNode.querySelector(".row-marker").innerHTML = marker(item.status);
       if (!item.est) rowNode.querySelector(".estimate-tag")?.remove();
@@ -383,8 +386,10 @@ export function mount(root) {
     status = "all";
     missingOnly = false;
     renderFilters();
-    results.focus({ preventScroll: true });
-    results.scrollIntoView({ block: "nearest" });
+    const newRow = results.querySelector(`[data-act="price"][data-id="${item.id}"]`).closest(".item-row");
+    newRow.tabIndex = -1;
+    newRow.focus({ preventScroll: true });
+    newRow.scrollIntoView({ block: "nearest" });
   });
   renderFilters();
 }

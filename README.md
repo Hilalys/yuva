@@ -10,7 +10,7 @@
 
 | Version | What to try | Silent demo |
 | --- | --- | --- |
-| [**Primary**](https://hilalys.github.io/yuva/?v=primary) | Open the kitchen from the illustrated floor plan, mark the espresso machine bought, and add something of your own. | [Watch Primary (0:40)](https://hilalys.github.io/yuva/review/demos/yuva-primary.mp4) |
+| [**Primary**](https://hilalys.github.io/yuva/?v=primary) | Scroll the full-page checklist while the floor plan stays in view on desktop. Pick the kitchen and mark the espresso machine bought. | [Watch Primary (0:40)](https://hilalys.github.io/yuva/review/demos/yuva-primary.mp4) |
 | [**Modern**](https://hilalys.github.io/yuva/?v=modern) | Explore the same checklist and floor plan in a quieter layout. Mark an item “Have it” and see how it affects your budget. | [Watch Modern (0:40)](https://hilalys.github.io/yuva/review/demos/yuva-modern.mp4) |
 | [**Basic**](https://hilalys.github.io/yuva/?v=basic) | Choose a home size, household size, and whether kids or pets are moving in. Yuva generates a checklist without pricing or a floor plan. | [Watch Basic (0:40)](https://hilalys.github.io/yuva/review/demos/yuva-basic.mp4) |
 

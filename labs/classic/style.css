@@ -149,7 +149,10 @@ body:has(> .yuva-classic) { margin: 0; }
 .yuva-classic .budget-figures strong { margin-inline-start: auto; color: var(--ink); }
 .yuva-classic .budget-figures .over { color: var(--on-accent); background: var(--danger); padding: 0 5px; border-radius: 3px; }
 .yuva-classic .key { display: inline-block; width: 11px; height: 11px; border: 1px solid var(--ink); border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
-.yuva-classic .workspace { display: grid; grid-template-columns: minmax(0, 1.13fr) minmax(0, 1fr); align-items: start; gap: 28px; }
+.yuva-classic .workspace { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); align-items: start; gap: 28px; }
+@media (min-width: 961px) and (min-height: 600px) {
+  .yuva-classic .plan { position: sticky; top: 16px; }
+}
 .yuva-classic .panel-heading { display: flex; gap: 10px; align-items: end; justify-content: space-between; padding: 13px 15px 11px; }
 .yuva-classic .panel-heading h2 { font-size: 25px; line-height: 1.06; font-weight: 900; letter-spacing: -.035em; margin-top: 3px; }
 .yuva-classic .panel-hint { color: var(--muted); font-size: 12px; font-weight: 650; text-align: end; }
@@ -242,8 +245,8 @@ body:has(> .yuva-classic) { margin: 0; }
 .yuva-classic .chip { display: inline-flex; gap: 5px; align-items: center; min-height: 28px; padding-inline: 9px; border: 1.5px solid var(--ink); border-radius: var(--r-pill); background: var(--surface); font-size: 12px; font-weight: 750; white-space: nowrap; }
 .yuva-classic .chip[aria-pressed="true"] { background: var(--c); color: var(--on-accent); box-shadow: var(--sh-xs); }
 .yuva-classic .chip[data-cat="all"][aria-pressed="true"] { background: var(--ink); color: var(--surface); }
-.yuva-classic .results { max-height: max(256px, calc(100dvh - 494px)); overflow: auto; scrollbar-width: thin; padding: 4px 8px 8px 3px; margin: -4px -8px -8px -3px; scrollbar-gutter: stable; }
-.yuva-classic .results:focus-visible { outline-offset: -2px; }
+.yuva-classic .results { min-width: 0; }
+.yuva-classic :is(#classic-list-title, .item-row) { scroll-margin-block: 16px; }
 .yuva-classic .category { border: 2px solid var(--ink); border-radius: var(--r-cat); background: var(--surface); box-shadow: var(--sh-cat); margin: 0 0 20px; }
 .yuva-classic .category:last-child { margin-bottom: 0; }
 .yuva-classic .category-heading { background: var(--c); color: var(--on-accent); border-radius: 13px 13px 0 0; overflow: clip; }
@@ -292,7 +295,6 @@ body:has(> .yuva-classic) { margin: 0; }
 @media (max-width: 960px) {
   .yuva-classic .workspace { grid-template-columns: 1fr; gap: 26px; }
   .yuva-classic .sheet { max-width: 740px; }
-  .yuva-classic .results { max-height: none; overflow: visible; scrollbar-gutter: auto; }
   .yuva-classic .jump-to-list { display: inline-flex; align-items: center; min-height: 44px; margin-top: 5px; font-size: 14px; font-weight: 750; color: var(--ink); text-underline-offset: 3px; }
 }
 @media (max-width: 660px) {
