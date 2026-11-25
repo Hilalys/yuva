@@ -32,6 +32,4 @@ python3 -m http.server 8000 --bind 127.0.0.1
 
 Open [the app](http://127.0.0.1:8000/) or [the comparison page](http://127.0.0.1:8000/review/). Shared starter items, budget calculations, and browser persistence live in [`model.js`](./model.js); the three versions live under [`labs/`](./labs/).
 
-## Deploy
 
-The [`Publish Yuva` workflow](./.github/workflows/pages.yml) publishes the static site to GitHub Pages on pushes to `main`. For a new repository, choose **Settings → Pages → Source → GitHub Actions** once. If the first push happened before Pages was enabled, run **Publish Yuva** from the **Actions** tab.
